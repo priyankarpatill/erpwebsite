@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP Features - EnterprisePro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #3b82f6;
+            --light: #f3f4f6;
+            --dark: #1f2937;
+            --text: #374151;
+        }
+        
+        body {
+            color: var(--text);
+            line-height: 1.6;
+            background-color: #f9fafb;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover, 
+        nav ul li a.active {
+            color: var(--primary);
+        }
+        
+        .cta-button {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--secondary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Features Navigation */
+        .features-nav {
+            background-color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 80px;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .features-nav-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .feature-nav-item {
+            padding: 10px 20px;
+            background-color: var(--light);
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .feature-nav-item:hover,
+        .feature-nav-item.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Module Sections */
+        .module-section {
+            padding: 80px 0;
+            scroll-margin-top: 160px;
+        }
+        
+        .module-section:nth-child(even) {
+            background-color: white;
+        }
+        
+        .module-section:nth-child(odd) {
+            background-color: var(--light);
+        }
+        
+        .module-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .module-header h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .module-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+        
+        .module-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            color: var(--primary);
+            font-size: 32px;
+        }
+        
+        .module-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .module-features {
+            list-style: none;
+        }
+        
+        .module-features li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .module-features li:before {
+            content: "✓";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .module-image {
+            background-color: var(--accent);
+            height: 300px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .benefit-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary);
+            font-size: 24px;
+        }
+        
+        .benefit-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+        
+        .button {
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .button.primary {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        .button.primary:hover {
+            background-color: var(--light);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 70px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #9ca3af;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .module-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin: 20px 0;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 10px 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .features-nav-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .feature-nav-item {
+                width: 200px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-chart-line"></i>
+                <span>EnterprisePro</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="features.html" class="active">Features</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="#demo" class="cta-button">Request Demo</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Comprehensive ERP Features</h1>
+            <p>Explore our powerful management modules designed to streamline your business operations</p>
+        </div>
+    </section>
+
+    <!-- Features Navigation -->
+    <section class="features-nav">
+        <div class="container features-nav-container">
+            <a href="#client-management" class="feature-nav-item active">Client Management</a>
+            <a href="#employee-management" class="feature-nav-item">Employee Management</a>
+            <a href="#project-management" class="feature-nav-item">Project Management</a>
+            <a href="#task-management" class="feature-nav-item">Task Management</a>
+            <a href="#attendance" class="feature-nav-item">Attendance System</a>
+            <a href="#booking-management" class="feature-nav-item">Booking Management</a>
+            <a href="#timesheet" class="feature-nav-item">Timesheet Management</a>
+        </div>
+    </section>
+
+    <!-- Client Management Section -->
+    <section id="client-management" class="module-section">
+        <div class="container">
+            <div class="module-header">
+                <div class="module-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h2>Client Management</h2>
+                <p>Streamline your customer relationships and improve client satisfaction</p>
+            </div>
+            <div class="module-content">
+                <div>
+                    <h3>Centralized Client Information</h3>
+                    <p>Manage all client data, interactions, and history in one secure location with our comprehensive client management system.</p>
+                    <ul class="module-features">
+                        <li>Complete client profiles with contact information and preferences</li>
+                        <li>Interaction tracking with detailed history of all communications</li>
+                        <li>Document management for contracts, proposals, and other client files</li>
+                        <li>Sales pipeline tracking and opportunity management</li>
+                        <li>Automated follow-up reminders and task assignments</li>
+                        <li>Client segmentation for targeted marketing campaigns</li>
+                        <li>Reporting and analytics on client engagement and satisfaction</li>
+                    </ul>
+                </div>
+                <div class="module-image">
+                    <i class="fas fa-user-tie fa-3x"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Employee Management Section -->
+    <section id="employee-management" class="module-section">
+        <div class="container">
+            <div class="module-header">
+                <div class="module-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h2>Employee Management</h2>
+                <p>Streamline HR processes and manage your workforce efficiently</p>
+            </div>
+            <div class="module-content">
+                <div class="module-image">
+                    <i class="fas fa-users fa-3x"></i>
+                </div>
+                <div>
+                    <h3>Complete HR Solution</h3>
+                    <p>From recruitment to retirement, our employee management system handles all aspects of your workforce management.</p>
+                    <ul class="module-features">
+                        <li>Employee database with detailed profiles and documents</li>
+                        <li>Recruitment and onboarding processes</li>
+                        <li>Performance tracking and review management</li>
+                        <li>Salary and benefits administration</li>
+                        <li>Training and development tracking</li>
+                        <li>Org chart visualization and reporting structure</li>
+                        <li>Employee self-service portal</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Management Section -->
+    <section id="project-management" class="module-section">
+        <div class="container">
+            <div class="module-header">
+                <div class="module-icon">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <h2>Project Management</h2>
+                <p>Plan, execute, and monitor projects with real-time tracking</p>
+            </div>
+            <div class="module-content">
+                <div>
+                    <h3>End-to-End Project Management</h3>
+                    <p>Keep your projects on track with our comprehensive project management tools designed for businesses of all sizes.</p>
+                    <ul class="module-features">
+                        <li>Project planning with Gantt charts and timelines</li>
+                        <li>Resource allocation and management</li>
+                        <li>Budget tracking and cost management</li>
+                        <li>Milestone tracking and deadline management</li>
+                        <li>Collaboration tools for team communication</li>
+                        <li>Risk assessment and mitigation planning</li>
+                        <li>Real-time progress tracking and reporting</li>
+                    </ul>
+                </div>
+                <div class="module-image">
+                    <i class="fas fa-project-diagram fa-3x"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Task Management Section -->
+    <section id="task-management" class="module-section">
+        <div class="container">
+            <div class="module-header">
+                <div class="module-icon">
+                    <i class="fas fa-tasks"></i>
+                </div>
+                <h2>Task Management</h2>
+                <p>Assign, track, and manage tasks across teams efficiently</p>
+            </div>
+            <div class="module-content">
+                <div class="module-image">
+                    <i class="fas fa-tasks fa-3x"></i>
+                </div>
+                <div>
+                    <h3>Streamlined Task Management</h3>
+                    <p>Increase productivity with our intuitive task management system that helps teams stay organized and focused.</p>
+                    <ul class="module-features">
+                        <li>Task creation with priorities and deadlines</li>
+                        <li>Assignment and delegation capabilities</li>
+                        <li>Progress tracking and status updates</li>
+                        <li>Time estimation and actual time tracking</li>
+                        <li>File attachments and comment threads</li>
+                        <li>Recurring task automation</li>
+                        <li>Integration with calendar and email systems</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Attendance System Section -->
+    <section id="attendance" class="module-section">
+        <div class="container">
+            <div class="module-header">
+                <div class="module-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h2>Attendance System</h2>
+                <p>Monitor employee attendance, leaves, and time-off requests</p>
+            </div>
+            <div class="module-content">
+                <div>
+                    <h3>Comprehensive Attendance Tracking</h3>
+                    <p>Simplify attendance management with our automated system that tracks time and attendance accurately.</p>
+                    <ul class="module-features">
+                        <li>Clock-in/clock-out functionality with geolocation</li>
+                        <li>Leave request and approval workflow</li>
+                        <li>Holiday calendar management</li>
+                        <li>Overtime calculation and management</li>
+                        <li>Attendance reporting and analytics</li>
+                        <li>Integration with payroll systems</li>
+                        <li>Mobile app for remote attendance tracking</li>
+                    </ul>
+                </div>
+                <div class="module-image">
+                    <i class="fas fa-calendar-check fa-3x"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Management Section -->
+    <section id="booking-management" class="module-section">
+        <div class="container">
+            <div class="module-header">
+                <div class="module-icon">
+                    <i class="fas fa-calendar-day"></i>
+                </div>
+                <h2>Booking Management</h2>
+                <p>Manage appointments, reservations, and resource bookings</p>
+            </div>
+            <div class="module-content">
+                <div class="module-image">
+                    <i class="fas fa-calendar-day fa-3x"></i>
+                </div>
+                <div>
+                    <h3>Efficient Booking System</h3>
+                    <p>Streamline your booking processes with our comprehensive management system for appointments and resources.</p>
+                    <ul class="module-features">
+                        <li>Online booking portal for customers</li>
+                        <li>Resource availability calendar</li>
+                        <li>Automated confirmation and reminder emails</li>
+                        <li>Waitlist management</li>
+                        <li>Payment processing integration</li>
+                        <li>Booking analytics and reporting</li>
+                        <li>Multi-location support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timesheet Management Section -->
+    <section id="timesheet" class="module-section">
+        <div class="container">
+            <div class="module-header">
+                <div class="module-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h2>Timesheet Management</h2>
+                <p>Track billable hours, project time, and productivity</p>
+            </div>
+            <div class="module-content">
+                <div>
+                    <h3>Accurate Time Tracking</h3>
+                    <p>Monitor and manage employee timesheets with our comprehensive time tracking solution.</p>
+                    <ul class="module-features">
+                        <li>Daily, weekly, and monthly timesheet entries</li>
+                        <li>Project-based time tracking</li>
+                        <li>Billable vs non-billable hours tracking</li>
+                        <li>Timesheet approval workflow</li>
+                        <li>Integration with payroll and invoicing</li>
+                        <li>Mobile time tracking</li>
+                        <li>Productivity reports and analytics</li>
+                    </ul>
+                </div>
+                <div class="module-image">
+                    <i class="fas fa-clock fa-3x"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="module-header">
+                <h2>Benefits of Our ERP System</h2>
+                <p>Discover how our comprehensive ERP solution can transform your business operations</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Increased Efficiency</h3>
+                    <p>Automate repetitive tasks and streamline workflows to boost productivity across your organization.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Cost Reduction</h3>
+                    <p>Eliminate redundant processes and reduce operational costs with integrated systems.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Data Centralization</h3>
+                    <p>Access all your business data from a single platform for better decision-making.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Improved Security</h3>
+                    <p>Protect your business data with robust security measures and access controls.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="demo">
+        <div class="container">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Schedule a personalized demo to see how our ERP system can work for your specific needs</p>
+            <a href="#contact" class="button primary">Request a Demo</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>EnterprisePro</h3>
+                    <p>Comprehensive ERP solutions for businesses of all sizes across various industries.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Management Modules</h3>
+                    <ul>
+                        <li><a href="#client-management">Client Management</a></li>
+                        <li><a href="#employee-management">Employee Management</a></li>
+                        <li><a href="#project-management">Project Management</a></li>
+                        <li><a href="#task-management">Task Management</a></li>
+                        <li><a href="#attendance">Attendance System</a></li>
+                        <li><a href="#booking-management">Booking Management</a></li>
+                        <li><a href="#timesheet">Timesheet Management</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Business Ave, Suite 500</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@enterprisepro.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 EnterprisePro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    // Update active nav item
+                    document.querySelectorAll('.feature-nav-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 140,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Update active nav item on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.module-section');
+            const navItems = document.querySelectorAll('.feature-nav-item');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 200)) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === '#' + currentSection) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
