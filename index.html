@@ -642,24 +642,202 @@
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <a href="#" class="logo" data-page="home">
-                <i class="fas fa-chart-line"></i>
-                <span>EnterprisePro</span>
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="#" data-page="home" class="active">Home</a></li>
-                    <li><a href="./features.html" >Features</a></li>
-                    <li><a href="#" data-page="pricing">Pricing</a></li>
-                    <li><a href="./about.html">About</a></li>
-                    <li><a href="./contact.html" >Contact</a></li>
-                </ul>
-            </nav>
-            <a href="#" data-page="demo" class="cta-button">Request Demo</a>
+<header>
+    <div class="container header-container">
+        <!-- Logo (left side) -->
+        <a href="#" class="logo" data-page="home">
+            <i class="fas fa-chart-line"></i>
+            <span>EnterprisePro</span>
+        </a>
+
+        <!-- Hamburger Menu Icon (right side in mobile view) -->
+        <div class="menu-toggle" id="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
         </div>
-    </header>
+
+        <!-- Desktop Nav -->
+        <nav class="desktop-nav">
+            <ul>
+                <li><a href="#" data-page="home" class="active">Home</a></li>
+                <li><a href="./features.html">Features</a></li>
+                <li><a href="#" data-page="pricing">Pricing</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- CTA button for desktop -->
+        <a href="#" data-page="demo" class="cta-button desktop-cta">Request Demo</a>
+    </div>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" id="mobile-nav">
+        <ul>
+            <li><a href="#" data-page="home">Home</a></li>
+            <li><a href="./features.html">Features</a></li>
+            <li><a href="#" data-page="pricing">Pricing</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="#" data-page="demo" class="cta-button">Request Demo</a></li>
+        </ul>
+    </div>
+</header>
+
+<style>
+
+    /* Ensure header-container uses flexbox properly */
+.header-container {
+    display: flex;
+    justify-content: space-between; /* This spreads logo left and menu icon right */
+    align-items: center;
+    padding: 1rem;
+}
+
+/* Keep the menu icon only visible in mobile */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Show only in mobile view */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .desktop-nav,
+    .desktop-cta {
+        display: none;
+    }
+
+    /* Fix centering issue */
+    .header-container {
+        flex-direction: row; /* make sure it's row direction */
+        justify-content: space-between; /* logo left, menu right */
+    }
+
+    .logo {
+        margin-right: auto;
+    }
+}
+
+    /* Container layout */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    position: relative;
+}
+
+/* Logo style */
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+
+.logo i {
+    margin-right: 0.5rem;
+}
+
+/* Menu toggle icon (hamburger) */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Desktop nav styles */
+.desktop-nav,
+.desktop-cta {
+    display: flex;
+}
+
+.desktop-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.desktop-nav li a,
+.cta-button {
+    text-decoration: none;
+    color: #333;
+}
+
+/* CTA button styles */
+.cta-button {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+}
+
+/* Mobile nav styles */
+.mobile-nav {
+    display: none;
+    background-color: #fff;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 999;
+}
+
+.mobile-nav.show {
+    display: block;
+}
+
+.mobile-nav ul {
+    list-style: none;
+    padding: 1rem;
+    margin: 0;
+}
+
+.mobile-nav ul li {
+    margin: 0.75rem 0;
+}
+
+.mobile-nav a {
+    text-decoration: none;
+    color: #333;
+}
+
+/* Responsive (Mobile) Styles */
+@media (max-width: 768px) {
+    .desktop-nav,
+    .desktop-cta {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .header-container {
+        justify-content: space-between;
+    }
+}
+
+</style>
+<script>
+    const menuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    menuToggle.addEventListener('click', () => {
+        mobileNav.classList.toggle('show');
+    });
+</script>
+
 
     <!-- Home Page -->
     <div id="home" class="page active">
