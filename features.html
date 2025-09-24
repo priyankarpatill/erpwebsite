@@ -16,14 +16,14 @@
         }
         
         :root {
-            --primary: #2563eb;
-            --secondary: #1e40af;
-            --accent: #3b82f6;
-            --light: #f3f4f6;
-            --dark: #1f2937;
-            --text: #374151;
-            --gradient-start: #2563eb;
-            --gradient-end: #7c3aed;
+            --primary: #FF8C00;        /* Dark orange */
+            --secondary: #FF6600;      /* Bright orange */
+            --accent: #FFA343;         /* Light orange */
+            --light: #fef6ec;          /* Very light orange tint */
+            --dark: #1a1a1a;           /* Near black */
+            --text: #333333;           /* Dark gray for text */
+            --gradient-start: #FF8C00;
+            --gradient-end: #FF6600;
         }
         
         body {
@@ -42,8 +42,8 @@
         
         /* Header Styles */
         header {
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            background-color: rgba(26, 26, 26, 0.95);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
             position: fixed;
             width: 100%;
             top: 0;
@@ -69,7 +69,7 @@
             align-items: center;
             font-weight: 700;
             font-size: 24px;
-            color: var(--primary);
+            color: white;
             text-decoration: none;
             transition: all 0.3s ease;
         }
@@ -90,7 +90,7 @@
         
         nav ul li a {
             text-decoration: none;
-            color: var(--text);
+            color: #f3f3f3;
             font-weight: 500;
             transition: color 0.3s;
             position: relative;
@@ -125,12 +125,12 @@
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+            box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
         }
         
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 8px 20px rgba(255, 140, 0, 0.5);
         }
         
         /* Hero Section */
@@ -172,12 +172,12 @@
         
         /* Features Navigation */
         .features-nav {
-            background-color: white;
+            background-color: var(--dark);
             padding: 20px 0;
             position: sticky;
             top: 80px;
             z-index: 999;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
         
         .features-nav-container {
@@ -189,10 +189,10 @@
         
         .feature-nav-item {
             padding: 12px 25px;
-            background-color: var(--light);
+            background-color: #2a2a2a;
             border-radius: 50px;
             text-decoration: none;
-            color: var(--text);
+            color: #f3f3f3;
             font-weight: 500;
             transition: all 0.3s ease;
             position: relative;
@@ -216,7 +216,7 @@
         .feature-nav-item.active {
             color: white;
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
+            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.3);
         }
         
         .feature-nav-item:hover:before,
@@ -289,7 +289,7 @@
             margin: 0 auto 30px;
             color: white;
             font-size: 40px;
-            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.2);
             animation: pulse 2s infinite;
         }
         
@@ -380,7 +380,7 @@
         /* Benefits Section */
         .benefits {
             padding: 100px 0;
-            background: linear-gradient(to bottom, #f9fafb, white);
+            background: linear-gradient(to bottom, var(--light), white);
             position: relative;
             overflow: hidden;
         }
@@ -392,7 +392,7 @@
             height: 100%;
             top: 0;
             left: 0;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%233b82f6' fill-opacity='0.03' d='M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,138.7C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23FF8C00' fill-opacity='0.03' d='M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,138.7C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
             background-size: cover;
             background-position: center;
         }
@@ -527,7 +527,7 @@
         
         /* Footer */
         footer {
-            background: linear-gradient(to bottom, var(--dark), #111827);
+            background: linear-gradient(to bottom, var(--dark), #0f0f0f);
             color: white;
             padding: 100px 0 40px;
             position: relative;
@@ -638,16 +638,94 @@
         @keyframes pulse {
             0% {
                 transform: scale(1);
-                box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+                box-shadow: 0 10px 30px rgba(255, 140, 0, 0.2);
             }
             50% {
                 transform: scale(1.05);
-                box-shadow: 0 15px 40px rgba(37, 99, 235, 0.3);
+                box-shadow: 0 15px 40px rgba(255, 140, 0, 0.3);
             }
             100% {
                 transform: scale(1);
-                box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+                box-shadow: 0 10px 30px rgba(255, 140, 0, 0.2);
             }
+        }
+        
+        /* Header Mobile Styles */
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            position: relative;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .logo i {
+            margin-right: 0.5rem;
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+        
+        .desktop-nav,
+        .desktop-cta {
+            display: flex;
+        }
+        
+        .desktop-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .desktop-nav li a,
+        .cta-button {
+            text-decoration: none;
+            color: #f3f3f3;
+        }
+        
+        .mobile-nav {
+            display: none;
+            background-color: var(--dark);
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 999;
+        }
+        
+        .mobile-nav.show {
+            display: block;
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+            padding: 1rem;
+            margin: 0;
+        }
+        
+        .mobile-nav ul li {
+            margin: 0.75rem 0;
+        }
+        
+        .mobile-nav a {
+            text-decoration: none;
+            color: #f3f3f3;
         }
         
         /* Responsive Design */
@@ -673,8 +751,17 @@
         
         @media (max-width: 768px) {
             .header-container {
-                flex-direction: column;
-                text-align: center;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            
+            .desktop-nav,
+            .desktop-cta {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: block;
             }
             
             nav ul {
@@ -732,202 +819,46 @@
 </head>
 <body>
     <!-- Header -->
-   <header>
-    <div class="container header-container">
-        <!-- Logo (left side) -->
-        <a href="#" class="logo" data-page="home">
-            <i class="fas fa-chart-line"></i>
-            <span>EnterprisePro</span>
-        </a>
+    <header>
+        <div class="container header-container">
+            <!-- Logo (left side) -->
+            <a href="#" class="logo" data-page="home">
+                <i class="fas fa-chart-line"></i>
+                <span>EnterprisePro</span>
+            </a>
 
-        <!-- Hamburger Menu Icon (right side in mobile view) -->
-        <div class="menu-toggle" id="mobile-menu-toggle">
-            <i class="fas fa-bars"></i>
+            <!-- Hamburger Menu Icon (right side in mobile view) -->
+            <div class="menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="./index.html" data-page="home" class="active">Home</a></li>
+                    <li><a href="./features.html">Features</a></li>
+                    <li><a href="./pricing.html" >Pricing</a></li>
+                    <li><a href="./about.html">About</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- CTA button for desktop -->
+            <a href="#" data-page="demo" class="cta-button desktop-cta">Request Demo</a>
         </div>
 
-        <!-- Desktop Nav -->
-        <nav class="desktop-nav">
+        <!-- Mobile Nav -->
+        <div class="mobile-nav" id="mobile-nav">
             <ul>
-                <li><a href="#" data-page="home" class="active">Home</a></li>
+                 <li><a href="./index.html">Home</a></li>
                 <li><a href="./features.html">Features</a></li>
-                <li><a href="#" data-page="pricing">Pricing</a></li>
+                <li><a href="./pricing.html" >Pricing</a></li>
                 <li><a href="./about.html">About</a></li>
                 <li><a href="./contact.html">Contact</a></li>
+                <li><a href="#" data-page="demo" class="cta-button">Request Demo</a></li>
             </ul>
-        </nav>
-
-        <!-- CTA button for desktop -->
-        <a href="#" data-page="demo" class="cta-button desktop-cta">Request Demo</a>
-    </div>
-
-    <!-- Mobile Nav -->
-    <div class="mobile-nav" id="mobile-nav">
-        <ul>
-            <li><a href="#" data-page="home">Home</a></li>
-            <li><a href="./features.html">Features</a></li>
-            <li><a href="#" data-page="pricing">Pricing</a></li>
-            <li><a href="./about.html">About</a></li>
-            <li><a href="./contact.html">Contact</a></li>
-            <li><a href="#" data-page="demo" class="cta-button">Request Demo</a></li>
-        </ul>
-    </div>
-</header>
-
-<style>
-
-    /* Ensure header-container uses flexbox properly */
-.header-container {
-    display: flex;
-    justify-content: space-between; /* This spreads logo left and menu icon right */
-    align-items: center;
-    padding: 1rem;
-}
-
-/* Keep the menu icon only visible in mobile */
-.menu-toggle {
-    display: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-/* Show only in mobile view */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-
-    .desktop-nav,
-    .desktop-cta {
-        display: none;
-    }
-
-    /* Fix centering issue */
-    .header-container {
-        flex-direction: row; /* make sure it's row direction */
-        justify-content: space-between; /* logo left, menu right */
-    }
-
-    .logo {
-        margin-right: auto;
-    }
-}
-
-    /* Container layout */
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    position: relative;
-}
-
-/* Logo style */
-.logo {
-    display: flex;
-    align-items: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-decoration: none;
-    color: #333;
-}
-
-.logo i {
-    margin-right: 0.5rem;
-}
-
-/* Menu toggle icon (hamburger) */
-.menu-toggle {
-    display: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #333;
-}
-
-/* Desktop nav styles */
-.desktop-nav,
-.desktop-cta {
-    display: flex;
-}
-
-.desktop-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-    margin: 0;
-    padding: 0;
-}
-
-.desktop-nav li a,
-.cta-button {
-    text-decoration: none;
-    color: #333;
-}
-
-/* CTA button styles */
-.cta-button {
-    padding: 0.5rem 1rem;
-    background-color: #007bff;
-    color: white;
-    border-radius: 4px;
-}
-
-/* Mobile nav styles */
-.mobile-nav {
-    display: none;
-    background-color: #fff;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    z-index: 999;
-}
-
-.mobile-nav.show {
-    display: block;
-}
-
-.mobile-nav ul {
-    list-style: none;
-    padding: 1rem;
-    margin: 0;
-}
-
-.mobile-nav ul li {
-    margin: 0.75rem 0;
-}
-
-.mobile-nav a {
-    text-decoration: none;
-    color: #333;
-}
-
-/* Responsive (Mobile) Styles */
-@media (max-width: 768px) {
-    .desktop-nav,
-    .desktop-cta {
-        display: none;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .header-container {
-        justify-content: space-between;
-    }
-}
-
-</style>
-<script>
-    const menuToggle = document.getElementById('mobile-menu-toggle');
-    const mobileNav = document.getElementById('mobile-nav');
-
-    menuToggle.addEventListener('click', () => {
-        mobileNav.classList.toggle('show');
-    });
-</script>
-
+        </div>
+    </header>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -1254,9 +1185,9 @@
                 <div class="footer-column">
                     <h3>Contact Us</h3>
                     <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Business Ave, Suite 500</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Peenya Industrial Area Phase IV, Bengaluru,.</li>
                         <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
-                        <li><i class="fas fa-envelope"></i> info@enterprisepro.com</li>
+                        <li><i class="fas fa-envelope"></i> sales.info@shashwathagroups.in</li>
                     </ul>
                 </div>
             </div>
@@ -1267,6 +1198,14 @@
     </footer>
 
     <script>
+        // Mobile menu functionality
+        const menuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileNav = document.getElementById('mobile-nav');
+
+        menuToggle.addEventListener('click', () => {
+            mobileNav.classList.toggle('show');
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
