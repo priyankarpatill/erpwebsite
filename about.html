@@ -82,6 +82,7 @@
         nav ul {
             display: flex;
             list-style: none;
+            align-items: center;
         }
         
         nav ul li {
@@ -117,10 +118,13 @@
             color: var(--primary);
         }
         
-        .cta-button {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: white;
-            padding: 12px 25px;
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .auth-button {
+            padding: 10px 20px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 500;
@@ -128,7 +132,24 @@
             box-shadow: 0 4px 15px rgba(255, 123, 0, 0.3);
         }
         
-        .cta-button:hover {
+        .auth-button.signin {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--primary);
+        }
+        
+        .auth-button.signin:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 123, 0, 0.4);
+        }
+        
+        .auth-button.register {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        .auth-button.register:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(255, 123, 0, 0.4);
         }
@@ -668,6 +689,74 @@
             font-size: 0.9rem;
         }
         
+        /* Menu toggle icon (hamburger) */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Mobile nav styles */
+        .mobile-nav {
+            display: none;
+            background-color: rgba(34, 34, 34, 0.98);
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 999;
+            backdrop-filter: blur(10px);
+        }
+
+        .mobile-nav.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 1rem;
+            margin: 0;
+        }
+
+        .mobile-nav ul li {
+            margin: 0.75rem 0;
+        }
+
+        .mobile-nav a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .mobile-nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-auth-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            padding: 0 10px;
+        }
+        
+        .mobile-auth-buttons .auth-button {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9rem;
+        }
+        
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -718,18 +807,17 @@
         
         @media (max-width: 768px) {
             .header-container {
-                flex-direction: column;
-                text-align: center;
+                flex-direction: row;
+                justify-content: space-between;
             }
             
-            nav ul {
-                margin: 20px 0;
-                flex-wrap: wrap;
-                justify-content: center;
+            .desktop-nav,
+            .desktop-auth {
+                display: none;
             }
             
-            nav ul li {
-                margin: 10px 15px;
+            .menu-toggle {
+                display: block;
             }
             
             .about-hero {
@@ -768,45 +856,51 @@
 <body>
     <!-- Header -->
     <header>
-    <div class="container header-container">
-        <!-- Logo (left side) -->
-        <a href="#" class="logo" data-page="home">
-            <i class="fas fa-chart-line"></i>
-            <span>EnterprisePro</span>
-        </a>
+        <div class="container header-container">
+            <!-- Logo (left side) -->
+            <a href="./index.html" class="logo">
+                <i class="fas fa-chart-line"></i>
+                <span>EnterprisePro</span>
+            </a>
 
-        <!-- Hamburger Menu Icon (right side in mobile view) -->
-        <div class="menu-toggle" id="mobile-menu-toggle">
-            <i class="fas fa-bars"></i>
+            <!-- Hamburger Menu Icon (right side in mobile view) -->
+            <div class="menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./features.html">Features</a></li>
+                    <li><a href="./pricing.html">Pricing</a></li>
+                    <li><a href="./about.html" class="active">About</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Auth buttons for desktop -->
+            <div class="auth-buttons desktop-auth">
+                <a href="./signin.html" class="auth-button signin">Sign In</a>
+                <a href="./register.html" class="auth-button register">Register</a>
+            </div>
         </div>
 
-        <!-- Desktop Nav -->
-        <nav class="desktop-nav">
+        <!-- Mobile Nav -->
+        <div class="mobile-nav" id="mobile-nav">
             <ul>
-                <li><a href="./index.html" data-page="home" class="active">Home</a></li>
+                <li><a href="./index.html">Home</a></li>
                 <li><a href="./features.html">Features</a></li>
-                <li><a href="./pricing.html" >Pricing</a></li>
-                <li><a href="./about.html">About</a></li>
+                <li><a href="./pricing.html">Pricing</a></li>
+                <li><a href="./about.html" class="active">About</a></li>
                 <li><a href="./contact.html">Contact</a></li>
+                <div class="mobile-auth-buttons">
+                    <a href="./signin.html" class="auth-button signin">Sign In</a>
+                    <a href="./register.html" class="auth-button register">Register</a>
+                </div>
             </ul>
-        </nav>
-
-        <!-- CTA button for desktop -->
-        <a href="#" data-page="demo" class="cta-button desktop-cta">Request Demo</a>
-    </div>
-
-    <!-- Mobile Nav -->
-    <div class="mobile-nav" id="mobile-nav">
-        <ul>
-             <li><a href="./index.html">Home</a></li>
-            <li><a href="./features.html">Features</a></li>
-            <li><a href="./pricing.html" >Pricing</a></li>
-            <li><a href="./about.html">About</a></li>
-            <li><a href="./contact.html">Contact</a></li>
-            <li><a href="#" data-page="demo" class="cta-button">Request Demo</a></li>
-        </ul>
-    </div>
-</header>
+        </div>
+    </header>
 
 <style>
 

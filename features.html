@@ -822,7 +822,7 @@
     <header>
         <div class="container header-container">
             <!-- Logo (left side) -->
-            <a href="#" class="logo" data-page="home">
+            <a href="./index.html" class="logo">
                 <i class="fas fa-chart-line"></i>
                 <span>EnterprisePro</span>
             </a>
@@ -835,30 +835,72 @@
             <!-- Desktop Nav -->
             <nav class="desktop-nav">
                 <ul>
-                    <li><a href="./index.html" data-page="home" class="active">Home</a></li>
+                    <li><a href="./index.html">Home</a></li>
                     <li><a href="./features.html">Features</a></li>
-                    <li><a href="./pricing.html" >Pricing</a></li>
-                    <li><a href="./about.html">About</a></li>
+                    <li><a href="./pricing.html">Pricing</a></li>
+                    <li><a href="./about.html" class="active">About</a></li>
                     <li><a href="./contact.html">Contact</a></li>
                 </ul>
             </nav>
 
-            <!-- CTA button for desktop -->
-            <a href="#" data-page="demo" class="cta-button desktop-cta">Request Demo</a>
+            <!-- Auth buttons for desktop -->
+            <div class="auth-buttons desktop-auth">
+                <a href="./signin.html" class="auth-button signin">Sign In</a>
+                <a href="./register.html" class="auth-button register">Register</a>
+            </div>
         </div>
 
         <!-- Mobile Nav -->
         <div class="mobile-nav" id="mobile-nav">
             <ul>
-                 <li><a href="./index.html">Home</a></li>
+                <li><a href="./index.html">Home</a></li>
                 <li><a href="./features.html">Features</a></li>
-                <li><a href="./pricing.html" >Pricing</a></li>
-                <li><a href="./about.html">About</a></li>
+                <li><a href="./pricing.html">Pricing</a></li>
+                <li><a href="./about.html" class="active">About</a></li>
                 <li><a href="./contact.html">Contact</a></li>
-                <li><a href="#" data-page="demo" class="cta-button">Request Demo</a></li>
+                <div class="mobile-auth-buttons">
+                    <a href="./signin.html" class="auth-button signin">Sign In</a>
+                    <a href="./register.html" class="auth-button register">Register</a>
+                </div>
             </ul>
         </div>
     </header>
+<style>  .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .auth-button {
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 123, 0, 0.3);
+        }
+        
+        .auth-button.signin {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--primary);
+        }
+        
+        .auth-button.signin:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 123, 0, 0.4);
+        }
+        
+        .auth-button.register {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        .auth-button.register:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 123, 0, 0.4);
+        }
+        </style>
 
     <!-- Hero Section -->
     <section class="hero">

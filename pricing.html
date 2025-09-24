@@ -606,7 +606,7 @@
     <header id="main-header">
         <div class="container header-container">
             <!-- Logo (left side) -->
-            <a href="index.html" class="logo">
+            <a href="#" class="logo" data-page="home">
                 <i class="fas fa-chart-line"></i>
                 <span>EnterprisePro</span>
             </a>
@@ -619,31 +619,159 @@
             <!-- Desktop Nav -->
             <nav class="desktop-nav">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="features.html">Features</a></li>
-                    <li><a href="pricing.html" class="active">Pricing</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./features.html" >Features</a></li>
+                    <li><a href="./pricing.html" >Pricing</a></li>
+                    <li><a href="./about.html" >About</a></li>
+                    <li><a href="./contact.html" >Contact</a></li>
                 </ul>
             </nav>
 
-            <!-- CTA button for desktop -->
-            <a href="demo.html" class="cta-button desktop-cta">Request Demo</a>
+            <!-- Auth buttons for desktop -->
+            <div class="auth-buttons desktop-auth">
+                <a href="#" data-page="signin" class="auth-button signin">Sign In</a>
+                <a href="#" data-page="register" class="auth-button register">Register</a>
+            </div>
         </div>
 
         <!-- Mobile Nav -->
         <div class="mobile-nav" id="mobile-nav">
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="features.html">Features</a></li>
-                <li><a href="pricing.html" class="active">Pricing</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="demo.html" class="cta-button">Request Demo</a></li>
+                <li><a href="./index.html" >Home</a></li>
+                <li><a href="./features.html">Features</a></li>
+                <li><a href="./pricing.html" >Pricing</a></li>
+                <li><a href="./about.html" >About</a></li>
+                <li><a href="./contact.html" >Contact</a></li>
+                <li>
+                    <div class="auth-buttons">
+                        <a href="#" data-page="signin" class="auth-button signin">Sign In</a>
+                        <a href="#" data-page="register" class="auth-button register">Register</a>
+                    </div>
+                </li>
             </ul>
         </div>
     </header>
-
+<style>  /* Header Styles */
+        header {
+            background-color: var(--secondary);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            padding: 5px 0;
+            background-color: rgba(26, 26, 26, 0.95);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 28px;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover:after, 
+        nav ul li a.active:after {
+            width: 100%;
+        }
+        
+        nav ul li a:hover, 
+        nav ul li a.active {
+            color: var(--primary);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .auth-button {
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .auth-button.signin {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .auth-button.register {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+        
+        .auth-button.signin:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .auth-button.register:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(255, 107, 53, 0.4);
+        }
+        </style>
     <!-- Pricing Page Content -->
     <div class="page">
         <!-- Hero Section -->

@@ -86,10 +86,11 @@
         nav ul {
             display: flex;
             list-style: none;
+            align-items: center;
         }
         
         nav ul li {
-            margin-left: 30px;
+            margin-left: 20px;
             position: relative;
         }
         
@@ -123,37 +124,41 @@
             color: var(--primary);
         }
         
-        .cta-button {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            color: white;
-            padding: 12px 25px;
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .auth-button {
+            padding: 10px 20px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .auth-button.signin {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .auth-button.register {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
             box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
-            position: relative;
-            overflow: hidden;
         }
         
-        .cta-button:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: all 0.6s ease;
+        .auth-button.signin:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
         }
         
-        .cta-button:hover:before {
-            left: 100%;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
+        .auth-button.register:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(255, 107, 53, 0.4);
         }
         
         /* Page Content */
@@ -950,7 +955,7 @@
             }
             
             .desktop-nav,
-            .desktop-cta {
+            .desktop-auth {
                 display: none;
             }
             
@@ -982,6 +987,17 @@
                 max-width: 300px;
                 text-align: center;
             }
+            
+            .auth-buttons {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
+            
+            .auth-button {
+                width: 100%;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -1011,8 +1027,11 @@
                 </ul>
             </nav>
 
-            <!-- CTA button for desktop -->
-            <a href="#" data-page="demo" class="cta-button desktop-cta">Request Demo</a>
+            <!-- Auth buttons for desktop -->
+            <div class="auth-buttons desktop-auth">
+                <a href="#" data-page="signin" class="auth-button signin">Sign In</a>
+                <a href="#" data-page="register" class="auth-button register">Register</a>
+            </div>
         </div>
 
         <!-- Mobile Nav -->
@@ -1023,24 +1042,44 @@
                 <li><a href="./pricing.html" >Pricing</a></li>
                 <li><a href="./about.html" >About</a></li>
                 <li><a href="./contact.html" >Contact</a></li>
-                <li><a href="#" data-page="demo" class="cta-button">Request Demo</a></li>
+                <li>
+                    <div class="auth-buttons">
+                        <a href="#" data-page="signin" class="auth-button signin">Sign In</a>
+                        <a href="#" data-page="register" class="auth-button register">Register</a>
+                    </div>
+                </li>
             </ul>
         </div>
     </header>
 
     <!-- Home Page -->
-    <div id="home" class="page active">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container hero-content">
-                <h1>Streamline Your Business with Advanced ERP Solutions</h1>
-                <p>Integrate all your business processes into one unified system to boost efficiency, reduce costs, and drive growth.</p>
-                <div class="hero-buttons">
-                    <a href="#" data-page="demo" class="button primary">Get Started</a>
-                    <a href="#" data-page="solutions" class="button secondary">Learn More</a>
-                </div>
-            </div>
-        </section>
+    <section class="hero" style="
+  background: url('./istockphoto-1916729901-612x612.jpg') no-repeat center center/cover;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;">
+  
+  <!-- Dark overlay -->
+  <div style="
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5); /* 👈 Adjust opacity (0.3–0.7) for brightness */
+    z-index: 0;"></div>
+
+  <div class="container hero-content" style="position: relative; z-index: 1;">
+      <h1>Streamline Your Business with Advanced ERP Solutions</h1>
+      <p>Integrate all your business processes into one unified system to boost efficiency, reduce costs, and drive growth.</p>
+      <div class="hero-buttons">
+          <a href="#" data-page="register" class="button primary">Get Started</a>
+          <a href="#" data-page="solutions" class="button secondary">Learn More</a>
+      </div>
+  </div>
+</section>
+
 
         <!-- Features Section -->
         <section class="features">
@@ -1120,8 +1159,153 @@
         <section class="cta">
             <div class="container cta-content">
                 <h2>Ready to Transform Your Business?</h2>
-                <p>Schedule a personalized demo to see how EnterprisePro can work for your specific needs.</p>
-                <a href="#" data-page="demo" class="button primary">Request a Demo</a>
+                <p>Create an account to start using our ERP solutions today.</p>
+                <a href="#" data-page="register" class="button primary">Request Demo</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Sign In Page -->
+    <div id="signin" class="page">
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>Sign In to Your Account</h1>
+                <p>Access your ERP dashboard and manage your business efficiently.</p>
+            </div>
+        </section>
+
+        <section class="contact">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info fade-in">
+                        <h2>Welcome Back</h2>
+                        <p>Sign in to access your EnterprisePro dashboard and continue managing your business operations.</p>
+                        <ul class="contact-details">
+                            <li>
+                                <i class="fas fa-shield-alt"></i>
+                                <div>
+                                    <strong>Secure Access</strong><br>
+                                    Your data is protected with enterprise-grade security
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <strong>24/7 Availability</strong><br>
+                                    Access your account anytime, anywhere
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-headset"></i>
+                                <div>
+                                    <strong>Need Help?</strong><br>
+                                    Contact our support team for assistance
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="contact-form fade-in">
+                        <h3>Sign In</h3>
+                        <form id="signinForm">
+                            <div class="form-group">
+                                <label for="signin-email">Email Address</label>
+                                <input type="email" id="signin-email" placeholder="Your email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="signin-password">Password</label>
+                                <input type="password" id="signin-password" placeholder="Your password" required>
+                            </div>
+                            <div class="form-group" style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <input type="checkbox" id="remember-me">
+                                    <label for="remember-me" style="display: inline; margin-left: 5px;">Remember me</label>
+                                </div>
+                                <a href="#" style="color: var(--primary); text-decoration: none;">Forgot password?</a>
+                            </div>
+                            <button type="submit" class="button primary" style="width: 100%;">Sign In</button>
+                            <p style="text-align: center; margin-top: 15px;">
+                                Don't have an account? <a href="#" data-page="register" style="color: var(--primary); text-decoration: none;">Register here</a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Register Page -->
+    <div id="register" class="page">
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>Create Your Account</h1>
+                <p>Join thousands of businesses using EnterprisePro to streamline their operations.</p>
+            </div>
+        </section>
+
+        <section class="contact">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info fade-in">
+                        <h2>Get Started Today</h2>
+                        <p>Create your EnterprisePro account and start transforming your business operations with our powerful ERP solutions.</p>
+                        <ul class="contact-details">
+                            <li>
+                                <i class="fas fa-rocket"></i>
+                                <div>
+                                    <strong>Quick Setup</strong><br>
+                                    Get started in minutes with our easy onboarding
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-graduation-cap"></i>
+                                <div>
+                                    <strong>Free Training</strong><br>
+                                    Access comprehensive tutorials and resources
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-handshake"></i>
+                                <div>
+                                    <strong>Dedicated Support</strong><br>
+                                    Our team is here to help you succeed
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="contact-form fade-in">
+                        <h3>Create Account</h3>
+                        <form id="registerForm">
+                            <div class="form-group">
+                                <label for="register-name">Full Name</label>
+                                <input type="text" id="register-name" placeholder="Your full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="register-email">Email Address</label>
+                                <input type="email" id="register-email" placeholder="Your email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="register-company">Company Name</label>
+                                <input type="text" id="register-company" placeholder="Your company" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="register-password">Password</label>
+                                <input type="password" id="register-password" placeholder="Create a password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="register-confirm">Confirm Password</label>
+                                <input type="password" id="register-confirm" placeholder="Confirm your password" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" id="agree-terms" required>
+                                <label for="agree-terms" style="display: inline; margin-left: 5px;">I agree to the <a href="#" style="color: var(--primary);">Terms of Service</a> and <a href="#" style="color: var(--primary);">Privacy Policy</a></label>
+                            </div>
+                            <button type="submit" class="button primary" style="width: 100%;">Create Account</button>
+                            <p style="text-align: center; margin-top: 15px;">
+                                Already have an account? <a href="#" data-page="signin" style="color: var(--primary); text-decoration: none;">Sign in here</a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
             </div>
         </section>
     </div>
@@ -1238,9 +1422,9 @@
 
         <section class="cta">
             <div class="container cta-content">
-                <h2>Need a Custom Solution?</h2>
-                <p>We can tailor our ERP system to meet your specific business requirements.</p>
-                <a href="#" data-page="contact" class="button primary">Contact Us</a>
+                <h2>Ready to Get Started?</h2>
+                <p>Create an account to access our industry-specific ERP solutions.</p>
+                <a href="#" data-page="register" class="button primary">Register Now</a>
             </div>
         </section>
     </div>
@@ -1272,7 +1456,7 @@
                             <li>Standard reporting</li>
                             <li>Email support</li>
                         </ul>
-                        <a href="#" class="button secondary">Get Started</a>
+                        <a href="#" data-page="register" class="button secondary">Get Started</a>
                     </div>
                     <div class="pricing-card popular fade-in">
                         <div class="popular-tag">Popular</div>
@@ -1286,7 +1470,7 @@
                             <li>Advanced analytics</li>
                             <li>Priority support</li>
                         </ul>
-                        <a href="#" class="button primary">Get Started</a>
+                        <a href="#" data-page="register" class="button primary">Get Started</a>
                     </div>
                     <div class="pricing-card fade-in">
                         <h3>Enterprise</h3>
@@ -1299,7 +1483,7 @@
                             <li>Advanced security</li>
                             <li>24/7 dedicated support</li>
                         </ul>
-                        <a href="#" class="button secondary">Get Started</a>
+                        <a href="#" data-page="register" class="button secondary">Get Started</a>
                     </div>
                 </div>
             </div>
@@ -1307,9 +1491,9 @@
 
         <section class="cta">
             <div class="container cta-content">
-                <h2>Need a Custom Plan?</h2>
-                <p>Contact us for enterprise-grade solutions with custom pricing.</p>
-                <a href="#" data-page="contact" class="button primary">Contact Sales</a>
+                <h2>Ready to Choose a Plan?</h2>
+                <p>Create an account to get started with the plan that fits your business.</p>
+                <a href="#" data-page="register" class="button primary">Register Now</a>
             </div>
         </section>
     </div>
@@ -1392,9 +1576,9 @@
 
         <section class="cta">
             <div class="container cta-content">
-                <h2>Join Our Team</h2>
-                <p>We're always looking for talented individuals to join our growing company.</p>
-                <a href="#" class="button primary">View Open Positions</a>
+                <h2>Join Our Growing Community</h2>
+                <p>Create an account today and start transforming your business operations.</p>
+                <a href="#" data-page="register" class="button primary">Register Now</a>
             </div>
         </section>
     </div>
@@ -1466,80 +1650,6 @@
         </section>
     </div>
 
-
-    
-    <!-- Demo Page -->
-    <div id="demo" class="page">
-        <section class="hero">
-            <div class="container hero-content">
-                <h1>Request a Demo</h1>
-                <p>See how EnterprisePro can transform your business operations.</p>
-            </div>
-        </section>
-
-        <section class="contact">
-            <div class="container">
-                <div class="contact-grid">
-                    <div class="contact-info fade-in">
-                        <h2>See EnterprisePro in Action</h2>
-                        <p>Schedule a personalized demo with one of our ERP experts. We'll show you how our solution can address your specific business challenges and answer any questions you may have.</p>
-                        <ul class="contact-details">
-                            <li>
-                                <i class="fas fa-clock"></i>
-                                <div>
-                                    <strong>Demo Duration</strong><br>
-                                    Approximately 45 minutes
-                                </div>
-                            </li>
-                            <li>
-                                <i class="fas fa-laptop"></i>
-                                <div>
-                                    <strong>Format</strong><br>
-                                    Online meeting via Zoom or Teams
-                                </div>
-                            </li>
-                            <li>
-                                <i class="fas fa-user-tie"></i>
-                                <div>
-                                    <strong>Presenter</strong><br>
-                                    One of our ERP specialists
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="contact-form fade-in">
-                        <h3>Schedule Your Demo</h3>
-                        <form id="demoForm">
-                            <div class="form-group">
-                                <label for="demo-name">Full Name</label>
-                                <input type="text" id="demo-name" placeholder="Your name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="demo-email">Email Address</label>
-                                <input type="email" id="demo-email" placeholder="Your email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="demo-company">Company</label>
-                                <input type="text" id="demo-company" placeholder="Your company" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="demo-industry">Industry</label>
-                                <input type="text" id="demo-industry" placeholder="Your industry">
-                            </div>
-                            <div class="form-group">
-                                <label for="demo-date">Preferred Date</label>
-                                <input type="date" id="demo-date" required>
-                            </div>
-                            <button type="submit" class="button primary">Request Demo</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-
-    <!-- Footer -->
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
@@ -1650,11 +1760,20 @@
                 });
             }
             
-            const demoForm = document.getElementById('demoForm');
-            if (demoForm) {
-                demoForm.addEventListener('submit', function(e) {
+            const signinForm = document.getElementById('signinForm');
+            if (signinForm) {
+                signinForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    alert('Thank you for requesting a demo! We will contact you to schedule it.');
+                    alert('Sign in functionality would be implemented here. Redirecting to dashboard...');
+                    this.reset();
+                });
+            }
+            
+            const registerForm = document.getElementById('registerForm');
+            if (registerForm) {
+                registerForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Registration successful! Welcome to EnterprisePro.');
                     this.reset();
                 });
             }
