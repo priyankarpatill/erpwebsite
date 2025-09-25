@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EnterprisePro - ERP Solutions</title>
+    <title>EnterprisePro - Comprehensive ERP Solutions</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* All your existing CSS remains the same */
         /* Reset and Base Styles */
         * {
             margin: 0;
@@ -932,6 +933,92 @@
             background: rgba(255, 255, 255, 0.1);
         }
         
+        /* New Styles for ERP Information */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .info-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .info-card h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .info-card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .info-card ul li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .info-card ul li:before {
+            content: "•";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .process-step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .process-step:not(:last-child):after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: 50%;
+            height: 2px;
+            background: var(--primary);
+            transform: translateY(-50%);
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0 auto 15px;
+        }
+        
         /* Responsive Design */
         @media (max-width: 992px) {
             .about-grid,
@@ -945,6 +1032,14 @@
             
             .pricing-card.popular:hover {
                 transform: translateY(-10px);
+            }
+            
+            .process-steps {
+                flex-direction: column;
+            }
+            
+            .process-step:not(:last-child):after {
+                display: none;
             }
         }
         
@@ -1019,9 +1114,10 @@
             <!-- Desktop Nav -->
             <nav class="desktop-nav">
                 <ul>
-                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./index.html" >Home</a></li>
                     <li><a href="./features.html" >Features</a></li>
-                    <li><a href="./pricing.html" >Pricing</a></li>
+                    <!-- <li><a href="" >ERP Modules</a></li> -->
+                    <li><a href="./pricing.html" data-page="pricing">Pricing</a></li>
                     <li><a href="./about.html" >About</a></li>
                     <li><a href="./contact.html" >Contact</a></li>
                 </ul>
@@ -1038,8 +1134,9 @@
         <div class="mobile-nav" id="mobile-nav">
             <ul>
                 <li><a href="./index.html" >Home</a></li>
-                <li><a href="./features.html">Features</a></li>
-                <li><a href="./pricing.html" >Pricing</a></li>
+                <li><a href="./features.html" >Features</a></li>
+                
+                <li><a href="./pricing.html" data-page="pricing">Pricing</a></li>
                 <li><a href="./about.html" >About</a></li>
                 <li><a href="./contact.html" >Contact</a></li>
                 <li>
@@ -1053,33 +1150,34 @@
     </header>
 
     <!-- Home Page -->
-    <section class="hero" style="
-  background: url('./istockphoto-1916729901-612x612.jpg') no-repeat center center/cover;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: white;
-  position: relative;
-  overflow: hidden;">
-  
-  <!-- Dark overlay -->
-  <div style="
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5); /* 👈 Adjust opacity (0.3–0.7) for brightness */
-    z-index: 0;"></div>
+    <div id="home" class="page active">
+        <!-- Hero Section -->
+        <section class="hero" style="
+          background: url('./istockphoto-1916729901-612x612.jpg') no-repeat center center/cover;
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          text-align: center;
+          color: white;
+          position: relative;
+          overflow: hidden;">
+          
+          <!-- Dark overlay -->
+          <div style="
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;"></div>
 
-  <div class="container hero-content" style="position: relative; z-index: 1;">
-      <h1>Streamline Your Business with Advanced ERP Solutions</h1>
-      <p>Integrate all your business processes into one unified system to boost efficiency, reduce costs, and drive growth.</p>
-      <div class="hero-buttons">
-          <a href="#" data-page="register" class="button primary">Get Started</a>
-          <a href="#" data-page="solutions" class="button secondary">Learn More</a>
-      </div>
-  </div>
-</section>
-
+          <div class="container hero-content" style="position: relative; z-index: 1;">
+              <h1>Streamline Your Business with Advanced ERP Solutions</h1>
+              <p>Integrate all your business processes into one unified system to boost efficiency, reduce costs, and drive growth.</p>
+              <div class="hero-buttons">
+                  <a href="#" data-page="register" class="button primary">Get Started</a>
+                  <a href="#" data-page="solutions" class="button secondary">Learn More</a>
+              </div>
+          </div>
+        </section>
 
         <!-- Features Section -->
         <section class="features">
@@ -1135,6 +1233,48 @@
             </div>
         </section>
 
+        <!-- ERP Benefits Section -->
+        <section class="solutions">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Key Benefits of EnterprisePro ERP</h2>
+                    <p>Discover how our ERP solution can transform your business operations</p>
+                </div>
+                <div class="info-grid">
+                    <div class="info-card fade-in">
+                        <h3>Increased Operational Efficiency</h3>
+                        <p>Streamline your business processes with automation and integration:</p>
+                        <ul>
+                            <li>Reduce manual data entry by up to 80%</li>
+                            <li>Automate approval workflows</li>
+                            <li>Eliminate redundant processes</li>
+                            <li>Improve cross-departmental collaboration</li>
+                        </ul>
+                    </div>
+                    <div class="info-card fade-in">
+                        <h3>Improved Decision Making</h3>
+                        <p>Access real-time data and analytics for better business decisions:</p>
+                        <ul>
+                            <li>Real-time dashboards and KPIs</li>
+                            <li>Advanced reporting capabilities</li>
+                            <li>Predictive analytics</li>
+                            <li>Customizable data visualization</li>
+                        </ul>
+                    </div>
+                    <div class="info-card fade-in">
+                        <h3>Cost Reduction</h3>
+                        <p>Lower operational costs through optimized processes:</p>
+                        <ul>
+                            <li>Reduce inventory carrying costs</li>
+                            <li>Minimize operational waste</li>
+                            <li>Optimize resource allocation</li>
+                            <li>Lower IT maintenance costs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Testimonials Section -->
         <section class="testimonials">
             <div class="container">
@@ -1161,151 +1301,6 @@
                 <h2>Ready to Transform Your Business?</h2>
                 <p>Create an account to start using our ERP solutions today.</p>
                 <a href="#" data-page="register" class="button primary">Request Demo</a>
-            </div>
-        </section>
-    </div>
-
-    <!-- Sign In Page -->
-    <div id="signin" class="page">
-        <section class="hero">
-            <div class="container hero-content">
-                <h1>Sign In to Your Account</h1>
-                <p>Access your ERP dashboard and manage your business efficiently.</p>
-            </div>
-        </section>
-
-        <section class="contact">
-            <div class="container">
-                <div class="contact-grid">
-                    <div class="contact-info fade-in">
-                        <h2>Welcome Back</h2>
-                        <p>Sign in to access your EnterprisePro dashboard and continue managing your business operations.</p>
-                        <ul class="contact-details">
-                            <li>
-                                <i class="fas fa-shield-alt"></i>
-                                <div>
-                                    <strong>Secure Access</strong><br>
-                                    Your data is protected with enterprise-grade security
-                                </div>
-                            </li>
-                            <li>
-                                <i class="fas fa-clock"></i>
-                                <div>
-                                    <strong>24/7 Availability</strong><br>
-                                    Access your account anytime, anywhere
-                                </div>
-                            </li>
-                            <li>
-                                <i class="fas fa-headset"></i>
-                                <div>
-                                    <strong>Need Help?</strong><br>
-                                    Contact our support team for assistance
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="contact-form fade-in">
-                        <h3>Sign In</h3>
-                        <form id="signinForm">
-                            <div class="form-group">
-                                <label for="signin-email">Email Address</label>
-                                <input type="email" id="signin-email" placeholder="Your email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="signin-password">Password</label>
-                                <input type="password" id="signin-password" placeholder="Your password" required>
-                            </div>
-                            <div class="form-group" style="display: flex; justify-content: space-between; align-items: center;">
-                                <div>
-                                    <input type="checkbox" id="remember-me">
-                                    <label for="remember-me" style="display: inline; margin-left: 5px;">Remember me</label>
-                                </div>
-                                <a href="#" style="color: var(--primary); text-decoration: none;">Forgot password?</a>
-                            </div>
-                            <button type="submit" class="button primary" style="width: 100%;">Sign In</button>
-                            <p style="text-align: center; margin-top: 15px;">
-                                Don't have an account? <a href="#" data-page="register" style="color: var(--primary); text-decoration: none;">Register here</a>
-                            </p>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Register Page -->
-    <div id="register" class="page">
-        <section class="hero">
-            <div class="container hero-content">
-                <h1>Create Your Account</h1>
-                <p>Join thousands of businesses using EnterprisePro to streamline their operations.</p>
-            </div>
-        </section>
-
-        <section class="contact">
-            <div class="container">
-                <div class="contact-grid">
-                    <div class="contact-info fade-in">
-                        <h2>Get Started Today</h2>
-                        <p>Create your EnterprisePro account and start transforming your business operations with our powerful ERP solutions.</p>
-                        <ul class="contact-details">
-                            <li>
-                                <i class="fas fa-rocket"></i>
-                                <div>
-                                    <strong>Quick Setup</strong><br>
-                                    Get started in minutes with our easy onboarding
-                                </div>
-                            </li>
-                            <li>
-                                <i class="fas fa-graduation-cap"></i>
-                                <div>
-                                    <strong>Free Training</strong><br>
-                                    Access comprehensive tutorials and resources
-                                </div>
-                            </li>
-                            <li>
-                                <i class="fas fa-handshake"></i>
-                                <div>
-                                    <strong>Dedicated Support</strong><br>
-                                    Our team is here to help you succeed
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="contact-form fade-in">
-                        <h3>Create Account</h3>
-                        <form id="registerForm">
-                            <div class="form-group">
-                                <label for="register-name">Full Name</label>
-                                <input type="text" id="register-name" placeholder="Your full name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="register-email">Email Address</label>
-                                <input type="email" id="register-email" placeholder="Your email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="register-company">Company Name</label>
-                                <input type="text" id="register-company" placeholder="Your company" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="register-password">Password</label>
-                                <input type="password" id="register-password" placeholder="Create a password" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="register-confirm">Confirm Password</label>
-                                <input type="password" id="register-confirm" placeholder="Confirm your password" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="checkbox" id="agree-terms" required>
-                                <label for="agree-terms" style="display: inline; margin-left: 5px;">I agree to the <a href="#" style="color: var(--primary);">Terms of Service</a> and <a href="#" style="color: var(--primary);">Privacy Policy</a></label>
-                            </div>
-                            <button type="submit" class="button primary" style="width: 100%;">Create Account</button>
-                            <p style="text-align: center; margin-top: 15px;">
-                                Already have an account? <a href="#" data-page="signin" style="color: var(--primary); text-decoration: none;">Sign in here</a>
-                            </p>
-                        </form>
-                    </div>
-                </div>
             </div>
         </section>
     </div>
@@ -1429,6 +1424,214 @@
         </section>
     </div>
 
+    <!-- ERP Modules Page -->
+    <div id="modules" class="page">
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>Comprehensive ERP Modules</h1>
+                <p>Explore the complete suite of modules that make up our EnterprisePro ERP system.</p>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Core ERP Modules</h2>
+                    <p>Our modular approach allows you to select only the features your business needs</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <h3>Financial Management</h3>
+                        <p>Complete accounting, budgeting, cash flow management, and financial reporting.</p>
+                        <ul class="pricing-features">
+                            <li>General ledger</li>
+                            <li>Accounts payable/receivable</li>
+                            <li>Budgeting & forecasting</li>
+                            <li>Financial reporting</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-warehouse"></i>
+                        </div>
+                        <h3>Supply Chain Management</h3>
+                        <p>End-to-end supply chain visibility from procurement to delivery.</p>
+                        <ul class="pricing-features">
+                            <li>Inventory management</li>
+                            <li>Procurement</li>
+                            <li>Order management</li>
+                            <li>Supplier relationship management</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Human Resources</h3>
+                        <p>Comprehensive HR management including payroll, benefits, and talent management.</p>
+                        <ul class="pricing-features">
+                            <li>Payroll processing</li>
+                            <li>Employee self-service</li>
+                            <li>Performance management</li>
+                            <li>Recruitment & onboarding</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Manufacturing</h3>
+                        <p>Production planning, quality control, and shop floor management.</p>
+                        <ul class="pricing-features">
+                            <li>Bill of materials</li>
+                            <li>Production scheduling</li>
+                            <li>Quality assurance</li>
+                            <li>Shop floor control</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3>Sales & Marketing</h3>
+                        <p>CRM, sales automation, marketing campaigns, and customer service.</p>
+                        <ul class="pricing-features">
+                            <li>Customer relationship management</li>
+                            <li>Sales automation</li>
+                            <li>Marketing automation</li>
+                            <li>Customer service</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3>Business Intelligence</h3>
+                        <p>Advanced analytics, reporting, and data visualization tools.</p>
+                        <ul class="pricing-features">
+                            <li>Custom dashboards</li>
+                            <li>Advanced reporting</li>
+                            <li>Data visualization</li>
+                            <li>Predictive analytics</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="solutions">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Additional Specialized Modules</h2>
+                    <p>Extend your ERP capabilities with these specialized modules</p>
+                </div>
+                <div class="solutions-grid">
+                    <div class="solution-card fade-in">
+                        <div class="solution-img">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <div class="solution-content">
+                            <h3>Project Management</h3>
+                            <p>Plan, execute, and track projects with comprehensive project management tools.</p>
+                            <ul class="pricing-features">
+                                <li>Project planning</li>
+                                <li>Resource allocation</li>
+                                <li>Time tracking</li>
+                                <li>Budget management</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="solution-card fade-in">
+                        <div class="solution-img">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div class="solution-content">
+                            <h3>Task Management</h3>
+                            <p>Assign, track, and manage tasks across your organization.</p>
+                            <ul class="pricing-features">
+                                <li>Task assignment</li>
+                                <li>Progress tracking</li>
+                                <li>Priority management</li>
+                                <li>Deadline monitoring</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="solution-card fade-in">
+                        <div class="solution-img">
+                            <i class="fas fa-user-clock"></i>
+                        </div>
+                        <div class="solution-content">
+                            <h3>Attendance System</h3>
+                            <p>Track employee attendance, leaves, and time-off requests.</p>
+                            <ul class="pricing-features">
+                                <li>Time tracking</li>
+                                <li>Leave management</li>
+                                <li>Attendance reporting</li>
+                                <li>Integration with payroll</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="solution-card fade-in">
+                        <div class="solution-img">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="solution-content">
+                            <h3>Booking Management</h3>
+                            <p>Manage appointments, reservations, and resource bookings.</p>
+                            <ul class="pricing-features">
+                                <li>Resource scheduling</li>
+                                <li>Appointment management</li>
+                                <li>Booking confirmations</li>
+                                <li>Calendar integration</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="solution-card fade-in">
+                        <div class="solution-img">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="solution-content">
+                            <h3>Timesheet Management</h3>
+                            <p>Track employee work hours, project time, and billable hours.</p>
+                            <ul class="pricing-features">
+                                <li>Time entry</li>
+                                <li>Project time tracking</li>
+                                <li>Approval workflows</li>
+                                <li>Billing integration</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="solution-card fade-in">
+                        <div class="solution-img">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="solution-content">
+                            <h3>Mobile Access</h3>
+                            <p>Access your ERP system from anywhere with our mobile applications.</p>
+                            <ul class="pricing-features">
+                                <li>Mobile dashboard</li>
+                                <li>Offline capabilities</li>
+                                <li>Push notifications</li>
+                                <li>Mobile approvals</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container cta-content">
+                <h2>Custom Module Development</h2>
+                <p>Need a module tailored to your specific business processes? We can develop custom solutions.</p>
+                <a href="#" data-page="contact" class="button primary">Discuss Custom Requirements</a>
+            </div>
+        </section>
+    </div>
+
     <!-- Pricing Page -->
     <div id="pricing" class="page">
         <section class="hero">
@@ -1489,11 +1692,61 @@
             </div>
         </section>
 
+        <section class="features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Implementation & Support</h2>
+                    <p>We provide comprehensive implementation services and ongoing support</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Implementation Services</h3>
+                        <p>Our experts will guide you through the entire implementation process.</p>
+                        <ul class="pricing-features">
+                            <li>Needs assessment</li>
+                            <li>System configuration</li>
+                            <li>Data migration</li>
+                            <li>User training</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>Ongoing Support</h3>
+                        <p>We provide continuous support to ensure your system runs smoothly.</p>
+                        <ul class="pricing-features">
+                            <li>Technical support</li>
+                            <li>System updates</li>
+                            <li>Performance monitoring</li>
+                            <li>User assistance</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3>Customization Services</h3>
+                        <p>Tailor the system to your specific business processes and requirements.</p>
+                        <ul class="pricing-features">
+                            <li>Custom reports</li>
+                            <li>Workflow customization</li>
+                            <li>Integration with other systems</li>
+                            <li>Module development</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="cta">
             <div class="container cta-content">
-                <h2>Ready to Choose a Plan?</h2>
-                <p>Create an account to get started with the plan that fits your business.</p>
-                <a href="#" data-page="register" class="button primary">Register Now</a>
+                <h2>Need a Custom Plan?</h2>
+                <p>Contact us for enterprise-grade solutions with custom pricing.</p>
+                <a href="#" data-page="contact" class="button primary">Contact Sales</a>
             </div>
         </section>
     </div>
@@ -1650,8 +1903,153 @@
         </section>
     </div>
 
+    <!-- Sign In Page -->
+    <div id="signin" class="page">
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>Sign In to Your Account</h1>
+                <p>Access your ERP dashboard and manage your business efficiently.</p>
+            </div>
+        </section>
+
+        <section class="contact">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info fade-in">
+                        <h2>Welcome Back</h2>
+                        <p>Sign in to access your EnterprisePro dashboard and continue managing your business operations.</p>
+                        <ul class="contact-details">
+                            <li>
+                                <i class="fas fa-shield-alt"></i>
+                                <div>
+                                    <strong>Secure Access</strong><br>
+                                    Your data is protected with enterprise-grade security
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <strong>24/7 Availability</strong><br>
+                                    Access your account anytime, anywhere
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-headset"></i>
+                                <div>
+                                    <strong>Need Help?</strong><br>
+                                    Contact our support team for assistance
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="contact-form fade-in">
+                        <h3>Sign In</h3>
+                        <form id="signinForm">
+                            <div class="form-group">
+                                <label for="signin-email">Email Address</label>
+                                <input type="email" id="signin-email" placeholder="Your email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="signin-password">Password</label>
+                                <input type="password" id="signin-password" placeholder="Your password" required>
+                            </div>
+                            <div class="form-group" style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <input type="checkbox" id="remember-me">
+                                    <label for="remember-me" style="display: inline; margin-left: 5px;">Remember me</label>
+                                </div>
+                                <a href="#" style="color: var(--primary); text-decoration: none;">Forgot password?</a>
+                            </div>
+                            <button type="submit" class="button primary" style="width: 100%;">Sign In</button>
+                            <p style="text-align: center; margin-top: 15px;">
+                                Don't have an account? <a href="#" data-page="register" style="color: var(--primary); text-decoration: none;">Register here</a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Register Page -->
+    <div id="register" class="page">
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>Create Your Account</h1>
+                <p>Join thousands of businesses using EnterprisePro to streamline their operations.</p>
+            </div>
+        </section>
+
+        <section class="contact">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info fade-in">
+                        <h2>Get Started Today</h2>
+                        <p>Create your EnterprisePro account and start transforming your business operations with our powerful ERP solutions.</p>
+                        <ul class="contact-details">
+                            <li>
+                                <i class="fas fa-rocket"></i>
+                                <div>
+                                    <strong>Quick Setup</strong><br>
+                                    Get started in minutes with our easy onboarding
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-graduation-cap"></i>
+                                <div>
+                                    <strong>Free Training</strong><br>
+                                    Access comprehensive tutorials and resources
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-handshake"></i>
+                                <div>
+                                    <strong>Dedicated Support</strong><br>
+                                    Our team is here to help you succeed
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="contact-form fade-in">
+                        <h3>Create Account</h3>
+                        <form id="registerForm">
+                            <div class="form-group">
+                                <label for="register-name">Full Name</label>
+                                <input type="text" id="register-name" placeholder="Your full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="register-email">Email Address</label>
+                                <input type="email" id="register-email" placeholder="Your email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="register-company">Company Name</label>
+                                <input type="text" id="register-company" placeholder="Your company" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="register-password">Password</label>
+                                <input type="password" id="register-password" placeholder="Create a password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="register-confirm">Confirm Password</label>
+                                <input type="password" id="register-confirm" placeholder="Confirm your password" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" id="agree-terms" required>
+                                <label for="agree-terms" style="display: inline; margin-left: 5px;">I agree to the <a href="#" style="color: var(--primary);">Terms of Service</a> and <a href="#" style="color: var(--primary);">Privacy Policy</a></label>
+                            </div>
+                            <button type="submit" class="button primary" style="width: 100%;">Create Account</button>
+                            <p style="text-align: center; margin-top: 15px;">
+                                Already have an account? <a href="#" data-page="signin" style="color: var(--primary); text-decoration: none;">Sign in here</a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
     <!-- Footer -->
-    <footer id="contact">
+    <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column">
@@ -1667,19 +2065,19 @@
                 <div class="footer-column">
                     <h3>Management Modules</h3>
                     <ul>
-                        <li><a href="#client-management">Client Management</a></li>
-                        <li><a href="#employee-management">Employee Management</a></li>
-                        <li><a href="#project-management">Project Management</a></li>
-                        <li><a href="#task-management">Task Management</a></li>
-                        <li><a href="#attendance">Attendance System</a></li>
-                        <li><a href="#booking-management">Booking Management</a></li>
-                        <li><a href="#timesheet">Timesheet Management</a></li>
+                        <li><a href="#" data-page="modules">Client Management</a></li>
+                        <li><a href="#" data-page="modules">Employee Management</a></li>
+                        <li><a href="#" data-page="modules">Project Management</a></li>
+                        <li><a href="#" data-page="modules">Task Management</a></li>
+                        <li><a href="#" data-page="modules">Attendance System</a></li>
+                        <li><a href="#" data-page="modules">Booking Management</a></li>
+                        <li><a href="#" data-page="modules">Timesheet Management</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Company</h3>
                     <ul>
-                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#" data-page="about">About Us</a></li>
                         <li><a href="#">Careers</a></li>
                         <li><a href="#">Blog</a></li>
                         <li><a href="#">Press</a></li>
