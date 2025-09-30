@@ -709,6 +709,28 @@
 <body>
     <!-- Header -->
       <!-- Header -->
+       <style>
+        .desktop-nav ul {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* adjust this value for spacing */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.desktop-nav ul li a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.desktop-nav ul li a:hover {
+    color: orange; /* optional hover effect */
+}
+
+       </style>
   <!-- Header -->
     <header>
         <div class="container header-container">
@@ -727,9 +749,10 @@
             <nav class="desktop-nav">
                 <ul>
                     <li><a href="./index.html">Home</a></li>
+                     <li><a href="./about.html" >About</a></li>
                     <li><a href="./features.html">Features</a></li>
                     <li><a href="./pricing.html">Pricing</a></li>
-                    <li><a href="./about.html" class="active">About</a></li>
+                    
                     <li><a href="./contact.html">Contact</a></li>
                 </ul>
             </nav>
@@ -918,9 +941,10 @@
                         </div>
                         <div class="info-content">
                             <h3>Our Location</h3>
-                            <p>3rd Main Rd, Ganapathy Nagar,</p>
-                            <p>Peenya Industrial Area Phase IV,</p>
-                            <p> Peenya, Bengaluru,.</p>
+                            <p>Vayuhu, 25, Kalpana Chawla Rd, </p>
+                            <p>Bhoopasandra New Extension,</p>
+                            <p> Central Excise Layout, Sanjayanagara,</p>
+                            <p>  Bengaluru, Karnataka 560094</p>
                         </div>
                     </div>
                     <div class="info-item">
@@ -939,19 +963,21 @@
                         </div>
                         <div class="info-content">
                             <h3>Email Address</h3>
-                            <p>sales.info@shashwathagroups.in</p>
+                            <p>sales.shashwathagroups@gmail.com</p>
+                            <p>contact@shashwathagroups.in</p>
+                            <p>info@shashwathagroups.in</p>
                             <p></p>
                         </div>
                     </div>
                     <div class="info-item">
-                        <div class="info-icon">
+                        <!-- <div class="info-icon">
                             <i class="fas fa-comments"></i>
-                        </div>
-                        <div class="info-content">
+                        </div> -->
+                        <!-- <div class="info-content">
                             <h3>Live Chat</h3>
                             <p>Available 24/7 for existing customers</p>
                             <p>Quick responses to your queries</p>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="contact-form">
@@ -1078,18 +1104,20 @@
                 <div class="footer-column">
                     <h3>Company</h3>
                     <ul>
+                        <li><a href="./index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
+                        <li><a href="./features.html">Features</a></li>
+                        <li><a href="./pricing.html">Pricing</a></li>
                         <li><a href="#">Careers</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Press</a></li>
+                        
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Contact Us</h3>
                     <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> Peenya Industrial Area Phase IV, Bengaluru,.</li>
-                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
-                        <li><i class="fas fa-envelope"></i>sales.info@shashwathagroups.in</li>
+                       <li><i class="fas fa-map-marker-alt"></i>Vayuhu, 25, Kalpana Chawla Rd, Bhoopasandra New Extension,Bengaluru, Karnataka 560094</li>
+                        <!-- <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li> -->
+                        <li><i class="fas fa-envelope"></i>sales.shashwathagroups@gmail.com</li>
                     </ul>
                 </div>
             </div>
@@ -1098,6 +1126,17 @@
             </div>
         </div>
     </footer>
+
+       <style>.footer-column ul li {
+    display: flex;
+    align-items: center;
+    gap: 8px;  /* space between icon and text */
+}
+
+.footer-column ul li i {
+    min-width: 20px; /* keeps icons aligned */
+}
+</style>
 
     <script>
         // Smooth scrolling for navigation links
